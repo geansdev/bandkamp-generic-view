@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.views import APIView, Response, status
+from rest_framework.views import APIView, Response, status, Request
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Song
@@ -12,7 +12,7 @@ class SongView(APIView, PageNumberPagination):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    def get(self, request, pk):
+    def get(self, request: Request, pk: int) -> Response:
         """
         Obtençao de musicas
         """
@@ -23,7 +23,7 @@ class SongView(APIView, PageNumberPagination):
 
         return self.get_paginated_response(serializer.data)
 
-    def post(self, request, pk):
+    def post(self, request: Request, pk: int) -> Response:
         """
         Criaçao de musica
         """
