@@ -12,7 +12,6 @@ class SongView(ListCreateAPIView, PageNumberPagination):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    queryset = Song.objects.all()
     serializer_class = SongSerializer
     pagination_class = PageNumberPagination
 

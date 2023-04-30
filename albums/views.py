@@ -10,7 +10,6 @@ class AlbumView(ListCreateAPIView, PageNumberPagination):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    queryset = Album.objects.all()
     serializer_class = AlbumSerializer
     pagination_class = PageNumberPagination
 
